@@ -65,13 +65,44 @@ func getCli() *cli.App{
 						Flags: []cli.Flag{
 							&cli.IntFlag{
 								Name:  "id",
-								Usage: "Id of the task to delete",
+								Usage: "ID of the task to delete",
 								Destination: &taskId,
 								Required: true,
 							},
 						},
                         Action: func(cCtx *cli.Context) error {
                             fmt.Println("Removing task")
+                            return nil
+                        },
+                    },
+					{
+                        Name:  "start",
+                        Usage: "start a task.",
+						Flags: []cli.Flag{
+							&cli.IntFlag{
+								Name:  "id",
+								Usage: "ID of the task to start",
+								Destination: &taskId,
+							},
+						},
+                        Action: func(cCtx *cli.Context) error {
+                            fmt.Println("starting task")
+                            return nil
+                        },
+                    },
+					{
+                        Name:  "stop",
+                        Usage: "stop the current task",
+                        Action: func(cCtx *cli.Context) error {
+                            fmt.Println("starting task")
+                            return nil
+                        },
+                    },
+					{
+                        Name:  "pause",
+                        Usage: "pause the current task",
+                        Action: func(cCtx *cli.Context) error {
+                            fmt.Println("starting task")
                             return nil
                         },
                     },
