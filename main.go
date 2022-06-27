@@ -95,7 +95,13 @@ func getCli(db *sql.DB) *cli.App{
 							},
 						},
                         Action: func(cCtx *cli.Context) error {
-                            fmt.Println("creating task")
+							var db_new_task string = `
+								INSERT INTO tasks(name, desc) VALUES(?, ?);
+							`
+							_, err := db.Exec(db_new_task, taskName, taskDesc)
+							if err != nil{
+								panic(err)
+							}
                             return nil
                         },
                     },
